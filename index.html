@@ -1,160 +1,491 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt-BR" data-theme="dark" data-lang="pt">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfólio | QA & AI Testing</title>
+    <title>Portfólio | Senior QA & AI Quality Engineer</title>
+    <meta name="description" content="Portfólio profissional de Engenharia de Qualidade, Automação em Python e Avaliação de IA.">
+    
     <style>
+        /* ==========================================================================
+           1. VARIÁVEIS CSS (TEMA CLARO E ESCURO)
+           ========================================================================== */
         :root {
-            --bg: #ffffff;
-            --text: #1a1a1a;
-            --card-bg: #f4f4f5;
+            --bg-primary: #0f172a;
+            --bg-card: #1e293b;
+            --border-color: #334155;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --accent: #38bdf8;
+            --accent-hover: #0284c7;
+            --badge-bg: #0f172a;
+            --container-mw: 900px;
+            --transition-speed: 0.25s;
+        }
+
+        [data-theme="light"] {
+            --bg-primary: #ffffff;
+            --bg-card: #f8fafc;
+            --border-color: #e2e8f0;
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
             --accent: #2563eb;
-            --border: #e5e7eb;
+            --accent-hover: #1d4ed8;
+            --badge-bg: #e2e8f0;
         }
-        [data-theme="dark"] {
-            --bg: #121212;
-            --text: #e5e5e5;
-            --card-bg: #1e1e1e;
-            --accent: #60a5fa;
-            --border: #333333;
+
+        /* ==========================================================================
+           2. ESTILOS BASE & RESET
+           ========================================================================== */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
+
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: var(--bg);
-            color: var(--text);
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
             line-height: 1.6;
-            margin: 0;
-            padding: 2rem;
-            transition: background 0.3s, color 0.3s;
+            transition: background-color var(--transition-speed), color var(--transition-speed);
+            padding: 0 1.5rem 3rem 1.5rem;
         }
-        max-width { max-width: 800px; margin: 0 auto; }
-        .controls { display: flex; gap: 1rem; justify-content: flex-end; margin-bottom: 2rem; }
-        button {
-            background: var(--card-bg);
-            color: var(--text);
-            border: 1px solid var(--border);
-            padding: 0.5rem 1rem;
+
+        .container {
+            max-width: var(--container-mw);
+            margin: 0 auto;
+        }
+
+        a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: color var(--transition-speed);
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Controle de Exibição Multilingue via CSS */
+        [data-lang="pt"] .lang-en { display: none !important; }
+        [data-lang="en"] .lang-pt { display: none !important; }
+
+        /* ==========================================================================
+           3. NAVEGAÇÃO & CONTROLES
+           ========================================================================== */
+        header nav {
+            display: flex;
+            justify-content: flex-end;
+            gap: 0.75rem;
+            padding: 1.5rem 0 1rem 0;
+        }
+
+        .btn-control {
+            background-color: var(--bg-card);
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+            padding: 0.5rem 0.85rem;
             border-radius: 6px;
             cursor: pointer;
-            font-weight: bold;
+            font-size: 0.9rem;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            transition: border-color var(--transition-speed), background-color var(--transition-speed);
         }
-        button:hover { border-color: var(--accent); }
-        h1, h2 { color: var(--accent); }
-        .section { margin-bottom: 3rem; }
+
+        .btn-control:hover {
+            border-color: var(--accent);
+        }
+
+        /* ==========================================================================
+           4. HERO SECTION VERTICAL (FOTO 3x4 + NOME + SOCIAL)
+           ========================================================================== */
+        .hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 1.5rem 0 2.5rem 0;
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 3rem;
+        }
+
+        /* Foto na Vertical com Aspect Ratio 3:4 */
+        .profile-img {
+            width: 180px;
+            aspect-ratio: 3 / 4;
+            object-fit: cover;
+            border-radius: 12px;
+            border: 2px solid var(--border-color);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+            margin-bottom: 1.5rem;
+            transition: transform var(--transition-speed), border-color var(--transition-speed);
+        }
+
+        .profile-img:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent);
+        }
+
+        .hero-title {
+            font-size: 2.2rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-subtitle {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-social {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: var(--accent);
+            color: #ffffff;
+            padding: 0.6rem 1.25rem;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-decoration: none;
+            transition: background-color var(--transition-speed), transform var(--transition-speed);
+        }
+
+        .btn-social:hover {
+            background-color: var(--accent-hover);
+            text-decoration: none;
+            transform: translateY(-2px);
+        }
+
+        .btn-social.secondary {
+            background-color: transparent;
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+        }
+
+        .btn-social.secondary:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .icon {
+            width: 18px;
+            height: 18px;
+            fill: currentColor;
+        }
+
+        /* ==========================================================================
+           5. SEÇÕES & CARDS
+           ========================================================================== */
+        section {
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .section-title::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background-color: var(--border-color);
+            margin-left: 0.5rem;
+        }
+
         .card {
-            background: var(--card-bg);
-            padding: 1.5rem;
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
             border-radius: 8px;
-            border: 1px solid var(--border);
-            margin-bottom: 1rem;
+            padding: 1.5rem;
+            margin-bottom: 1.25rem;
+            transition: border-color var(--transition-speed);
         }
-        .tags { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 1rem; }
-        .tag {
-            background: var(--bg);
-            border: 1px solid var(--border);
-            padding: 0.2rem 0.6rem;
-            border-radius: 4px;
+
+        .card:hover {
+            border-color: var(--accent);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 0.5rem;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .card-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+        }
+
+        .card-period {
             font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        .card-description {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* Grid de Skills & Tags */
+        .tags-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .tag-chip {
+            background-color: var(--badge-bg);
+            color: var(--accent);
+            border: 1px solid var(--border-color);
+            padding: 0.25rem 0.65rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            font-family: monospace;
+        }
+
+        .grid-cases {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.25rem;
+        }
+
+        @media (min-width: 640px) {
+            .grid-cases { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            font-size: 0.9rem;
         }
     </style>
 </head>
 <body>
-    <div style="max-width: 800px; margin: 0 auto;">
-        <div class="controls">
-            <button onclick="toggleLang()" id="btn-lang">EN</button>
-            <button onclick="toggleTheme()" id="btn-theme">🌙 Dark</button>
-        </div>
 
-        <div class="section" id="profile">
-            <h1 class="pt">Olá, sou Engenheiro de QA Sênior</h1>
-            <h1 class="en" style="display:none;">Hi, I'm a Senior QA Engineer</h1>
-            
-            <p class="pt">Especialista em automação de testes com Python, avaliação de modelos de Inteligência Artificial (LLMs/RAG) e observabilidade. Foco em garantir resiliência, segurança e qualidade em arquiteturas complexas.</p>
-            <p class="en" style="display:none;">Specialist in Python test automation, AI model evaluation (LLMs/RAG), and observability. Focused on ensuring resilience, security, and quality in complex architectures.</p>
-        </div>
+    <div class="container">
+        
+        <!-- NAVEGAÇÃO SUPERIOR (CONTROLES DE TEMA E IDIOMA) -->
+        <header>
+            <nav aria-label="Controles de acessibilidade e idioma">
+                <button class="btn-control" id="btn-lang" onclick="toggleLanguage()" aria-label="Alternar idioma">
+                    <span>EN</span>
+                </button>
+                <button class="btn-control" id="btn-theme" onclick="toggleTheme()" aria-label="Alternar tema claro e escuro">
+                    <span id="theme-icon">☀️</span>
+                </button>
+            </nav>
 
-        <!-- <div class="section">
-            <h2 class="pt">Experiência</h2>
-            <h2 class="en" style="display:none;">Experience</h2>
-            
-            <div class="card">
-                <h3>Senior Quality Assurance Engineer</h3>
-                <p class="pt">Implementação de estratégias de teste (TDD, pytest, mocking) para automação backend. Integração de testes de segurança e validação de aplicações baseadas em IA generativa nos pipelines de CI/CD.</p>
-                <p class="en" style="display:none;">Implementation of testing strategies (TDD, pytest, mocking) for backend automation. Integration of security tests and validation of generative AI applications within CI/CD pipelines.</p>
-            </div>
-        </div> -->
-
-        <!-- <div class="section">
-            <h2 class="pt">Cases de Sucesso</h2>
-            <h2 class="en" style="display:none;">Success Cases</h2>
-            
-            <div class="card">
-                <h3 class="pt">Avaliação de Vulnerabilidades em RAG (Giskard)</h3>
-                <h3 class="en" style="display:none;">RAG Vulnerability Evaluation (Giskard)</h3>
-                <p class="pt">Desenvolvimento de suítes de testes adversariais para pipelines RAG (Sentence Transformers + Groq API) utilizando o framework Giskard, mitigando riscos de alucinação e vazamento de dados.</p>
-                <p class="en" style="display:none;">Development of adversarial test suites for RAG pipelines (Sentence Transformers + Groq API) using the Giskard framework, mitigating hallucination and data leakage risks.</p>
-                <div class="tags">
-                    <span class="tag">Python</span>
-                    <span class="tag">RAG</span>
-                    <span class="tag">Giskard</span>
-                    <span class="tag">Groq API</span>
+            <!-- HERO SECTION VERTICAL -->
+            <div class="hero">
+                <!-- Foto Vertical 3x4 -->
+                <img src="foto-3x4.jpeg" alt="Foto de perfil profissional" class="profile-img">
+                
+                <h1 class="hero-title">Seu Nome Aqui</h1>
+                
+                <p class="hero-subtitle lang-pt">Engenheiro de QA Sênior | Automação & IA Quality</p>
+                <p class="hero-subtitle lang-en">Senior QA Engineer | Automation & AI Quality</p>
+                
+                <div class="social-links">
+                    <a href="https://github.com/seu-usuario" target="_blank" rel="noopener noreferrer" class="btn-social" aria-label="Perfil do GitHub">
+                        <svg class="icon" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                        <span>GitHub</span>
+                    </a>
+                    
+                    <a href="https://linkedin.com/in/seu-usuario" target="_blank" rel="noopener noreferrer" class="btn-social secondary" aria-label="Perfil do LinkedIn">
+                        <svg class="icon" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                        <span>LinkedIn</span>
+                    </a>
                 </div>
             </div>
+        </header>
 
-            <div class="card">
-                <h3 class="pt">Monitoramento e Observabilidade QA</h3>
-                <h3 class="en" style="display:none;">QA Monitoring and Observability</h3>
-                <p class="pt">Configuração de dashboards de qualidade no Grafana integrados com métricas Prometheus (ex: latência de query, taxas de erro), permitindo detecção proativa de degradação em sistemas conteinerizados.</p>
-                <p class="en" style="display:none;">Configuration of quality dashboards in Grafana integrated with Prometheus metrics (e.g., query latency, error rates), enabling proactive detection of degradation in containerized systems.</p>
-                <div class="tags">
-                    <span class="tag">Grafana</span>
-                    <span class="tag">Prometheus</span>
-                    <span class="tag">Docker</span>
+        <!-- CONTEÚDO PRINCIPAL (SEMÂNTICO) -->
+        <main>
+            
+            <!-- SOBRE MIM -->
+            <section id="about">
+                <h2 class="section-title">
+                    <span class="lang-pt">Sobre</span>
+                    <span class="lang-en">About</span>
+                </h2>
+                <p class="lang-pt">
+                    Engenheiro de QA Sênior focado na arquitetura e automação de testes para ecossistemas complexos. Especializado em qualidade de software com Python, avaliação adversarial e resiliência de sistemas de Inteligência Artificial (LLM/RAG), e implementação de observabilidade distribuída para mitigação proativa de falhas.
+                </p>
+                <p class="lang-en">
+                    Senior QA Engineer focused on test architecture and automation for complex ecosystems. Specialized in Python software quality, adversarial evaluation and resilience of Artificial Intelligence systems (LLM/RAG), and distributed observability implementation for proactive fault mitigation.
+                </p>
+            </section>
+
+            <!-- HABILIDADES TÉCNICAS -->
+            <section id="skills">
+                <h2 class="section-title">
+                    <span class="lang-pt">Competências</span>
+                    <span class="lang-en">Skills</span>
+                </h2>
+                <div class="tags-container">
+                    <span class="tag-chip">Python</span>
+                    <span class="tag-chip">Pytest</span>
+                    <span class="tag-chip">TDD & Mocking</span>
+                    <span class="tag-chip">AI Testing (Giskard)</span>
+                    <span class="tag-chip">RAG & LLM Evaluation</span>
+                    <span class="tag-chip">Grafana & Prometheus</span>
+                    <span class="tag-chip">Docker</span>
+                    <span class="tag-chip">CI/CD Pipelines</span>
                 </div>
-            </div>
-        </div> -->
+            </section>
+
+            <!-- EXPERIÊNCIA PROFISSIONAL -->
+            <section id="experience">
+                <h2 class="section-title">
+                    <span class="lang-pt">Experiência</span>
+                    <span class="lang-en">Experience</span>
+                </h2>
+
+                <article class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Senior QA Engineer</h3>
+                        <span class="card-period">2023 — Presente</span>
+                    </div>
+                    <p class="card-description lang-pt">
+                        Liderança da estratégia de qualidade em aplicações backend e orientadas a IA. Desenvolvimento de suítes automatizadas robustas usando Pytest, fixtures e TDD. Integração de testes adversariais e monitoramento contínuo em ambientes conteinerizados.
+                    </p>
+                    <p class="card-description lang-en">
+                        Leading quality strategy for backend and AI-driven applications. Development of robust automated suites using Pytest, fixtures, and TDD. Integration of adversarial testing and continuous monitoring in containerized environments.
+                    </p>
+                </article>
+            </section>
+
+            <!-- CASES DE SUCESSO -->
+            <section id="cases">
+                <h2 class="section-title">
+                    <span class="lang-pt">Cases & Projetos</span>
+                    <span class="lang-en">Cases & Projects</span>
+                </h2>
+
+                <div class="grid-cases">
+                    
+                    <!-- Case 1 -->
+                    <article class="card">
+                        <h3 class="card-title lang-pt">Avaliação Adversarial de RAG</h3>
+                        <h3 class="card-title lang-en">RAG Adversarial Evaluation</h3>
+                        <p class="card-description lang-pt" style="margin-top: 0.5rem;">
+                            Implementação de validação de segurança e qualidade em pipeline RAG (Sentence Transformers + Groq API) usando o framework Giskard para detectar alucinações e riscos de injeção de prompt.
+                        </p>
+                        <p class="card-description lang-en" style="margin-top: 0.5rem;">
+                            Implementation of security and quality validation in a RAG pipeline (Sentence Transformers + Groq API) using the Giskard framework to detect hallucinations and prompt injection risks.
+                        </p>
+                        <div class="tags-container">
+                            <span class="tag-chip">Giskard</span>
+                            <span class="tag-chip">Python</span>
+                            <span class="tag-chip">Groq API</span>
+                        </div>
+                    </article>
+
+                    <!-- Case 2 -->
+                    <article class="card">
+                        <h3 class="card-title lang-pt">Observabilidade de Testes</h3>
+                        <h3 class="card-title lang-en">Test Observability</h3>
+                        <p class="card-description lang-pt" style="margin-top: 0.5rem;">
+                            Criação de dashboards no Grafana alimentados por métricas do Prometheus para monitorar latência, throughput e taxa de erro de execuções de testes em pipelines de integração contínua.
+                        </p>
+                        <p class="card-description lang-en" style="margin-top: 0.5rem;">
+                            Creation of Grafana dashboards powered by Prometheus metrics to monitor latency, throughput, and error rates of test runs in continuous integration pipelines.
+                        </p>
+                        <div class="tags-container">
+                            <span class="tag-chip">Grafana</span>
+                            <span class="tag-chip">Prometheus</span>
+                            <span class="tag-chip">PromQL</span>
+                        </div>
+                    </article>
+
+                </div>
+            </section>
+
+        </main>
+
+        <!-- RODAPÉ -->
+        <footer>
+            <p class="lang-pt">Aberto a novas oportunidades e conexões técnicas.</p>
+            <p class="lang-en">Open to new opportunities and technical connections.</p>
+            <p style="margin-top: 0.5rem;">
+                <a href="mailto:seu-email@dominio.com">seu-email@dominio.com</a>
+            </p>
+        </footer>
+
     </div>
 
+    <!-- JAVASCRIPT SLIM E MODULAR -->
     <script>
-        // Theme Toggle
+        // 1. Gerenciamento do Tema (Claro / Escuro)
+        function initTheme() {
+            const savedTheme = localStorage.getItem('theme') || 
+                (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+            setTheme(savedTheme);
+        }
+
+        function setTheme(theme) {
+            document.documentElement.setAttribute('data-theme', theme);
+            localStorage.setItem('theme', theme);
+            document.getElementById('theme-icon').textContent = theme === 'light' ? '🌙' : '☀️';
+        }
+
         function toggleTheme() {
-            const html = document.documentElement;
-            const btn = document.getElementById('btn-theme');
-            if (html.getAttribute('data-theme') === 'dark') {
-                html.removeAttribute('data-theme');
-                btn.textContent = '🌙 Dark';
-            } else {
-                html.setAttribute('data-theme', 'dark');
-                btn.textContent = '☀️ Light';
-            }
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            setTheme(currentTheme === 'light' ? 'dark' : 'light');
         }
 
-        // Language Toggle
-        let currentLang = 'pt';
-        function toggleLang() {
-            const pts = document.querySelectorAll('.pt');
-            const ens = document.querySelectorAll('.en');
-            const btn = document.getElementById('btn-lang');
-            
-            if (currentLang === 'pt') {
-                pts.forEach(el => el.style.display = 'none');
-                ens.forEach(el => el.style.display = 'block');
-                btn.textContent = 'PT';
-                currentLang = 'en';
-            } else {
-                pts.forEach(el => el.style.display = 'block');
-                ens.forEach(el => el.style.display = 'none');
-                btn.textContent = 'EN';
-                currentLang = 'pt';
-            }
+        // 2. Gerenciamento de Idioma (PT / EN)
+        function initLanguage() {
+            const savedLang = localStorage.getItem('lang') || 'pt';
+            setLanguage(savedLang);
         }
 
-        // Set system default theme
-        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-            document.documentElement.setAttribute('data-theme', 'dark');
-            document.getElementById('btn-theme').textContent = '☀️ Light';
+        function setLanguage(lang) {
+            document.documentElement.setAttribute('data-lang', lang);
+            document.documentElement.setAttribute('lang', lang === 'pt' ? 'pt-BR' : 'en');
+            localStorage.setItem('lang', lang);
+            document.getElementById('btn-lang').textContent = lang === 'pt' ? 'EN' : 'PT';
         }
+
+        function toggleLanguage() {
+            const currentLang = document.documentElement.getAttribute('data-lang');
+            setLanguage(currentLang === 'pt' ? 'en' : 'pt');
+        }
+
+        // Inicialização ao carregar a página
+        document.addEventListener('DOMContentLoaded', () => {
+            initTheme();
+            initLanguage();
+        });
     </script>
 </body>
 </html>
